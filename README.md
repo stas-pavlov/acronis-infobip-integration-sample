@@ -210,4 +210,4 @@ The structure is very simple, code is iterate through array of recipients from `
 
 It's a very simple strighforward example of integration between Infobip and Acronis, where Acronis is used as an example of any services which can be accessed through API. This example is ready to used and can be simple adopted for any other services. Not all possible error handled, only logical one. Thus if you plan to use it in production, you can surround code in ``main.py`` by ``try ... catch`` routine and manage errors in one place.
 
-I designed this example to showcase, how simple you can imporove you partner, customer or internal support team expirince  with modern CSaaS solutions.
+I designed this example to showcase, how simple you can imporove you partner, customer or internal support team expirince  with modern CSaaS solutions: you need an account and only few simple REST calls.

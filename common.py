@@ -334,11 +334,13 @@ class Infobip:
             if len(viber_scenario)>0:
                 self.__scenarios['acronis-infobip-viber-sms-omni'] = viber_scenario[0]["key"]
             else:
-                self.__create_viber_sms_onmi_scenario()
+                response = self.__create_viber_sms_onmi_scenario()
+                self.__scenarios['acronis-infobip-viber-sms-omni'] = response.json()["key"]
                 
             whatsapp_scenario = [scenario for scenario in response.json()["scenarios"] if scenario["name"] == 'acronis-infobip-whatsapp-sms-omni']
             
             if len(whatsapp_scenario)>0:
                 self.__scenarios['acronis-infobip-whatsapp-sms-omni'] = whatsapp_scenario[0]["key"]
             else:
-                self.__create_whatsapp_sms_onmi_scenario()
+                response = self.__create_whatsapp_sms_onmi_scenario()
+                self.__scenarios['acronis-infobip-whatsapp-sms-omni'] = response.json()["key"]

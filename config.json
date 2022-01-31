@@ -1,0 +1,14 @@
+{
+    "infobip_base_url": "",
+    "infobip_api_key": "",
+    "acronis_base_url": "https://dev-cloud.acronis.com/",
+    "acronis_client_id": "",
+    "acronis_client_secret": "",
+    "whats_app_from_number": "447860099299 ",
+    "sms_from_number": "InfoSMS ",
+    "viber_from_account": "DemoCompany",
+    "to_notify":[
+        ""
+    ],
+    "channel": "whatsapp-sms" 
+}

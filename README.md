@@ -33,7 +33,7 @@ Click **Next** button and notice you Client ID, Client Secret and base URL for A
 
 ### The Example Initial Configuration
 
-The example is fully confugurable through ``config.json`` file in the root folder. To have workable example you need to fill that file with your data. Initially the file is populated with Infobip testdomain data and Acronis dev-cloud base URL.
+The example is fully confugurable through ``config.json`` file in the root folder. To have a workable example you need to fill that file with your data. Initially the file is populated with Infobip testdomain data and Acronis dev-cloud base URL.
 
 ```json
 {
@@ -119,7 +119,7 @@ The main code use helper classes fron ``common.py``: ``Config``, ``Infobip`` and
 ``Config`` instance represent all needed configuration information to successfully call Infobip and Acronis API.
 ``Infobip`` instance reporeset base REST method calls togther with some more functional API as well as some initialisation routine. ``Acronis`` instance represent very base class wrapper with base REST method calls.
 
-Let's look how ``Infobip`` class is initialized
+Let's have a look how ``Infobip`` class is initialized
 
 ```python
 def __init__(self, cfg: Config):
@@ -171,7 +171,7 @@ def __create_viber_sms_onmi_scenario(self):
 
 The function for WhatsApp omniscenario creation is near the same.
 
-Let's look to a function we use to send messages.
+Let's have look at the function we use to send messages.
 
 ```python
 # Send an OMNI message Viber+SMS to all persons from to_notify array in config.json

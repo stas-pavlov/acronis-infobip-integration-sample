@@ -54,7 +54,7 @@ The example is fully confugurable through ``config.json`` file in the root folde
 
 Please, paste to the file your Infobip base URL edned with ``\`` and your Infobip API Key. As well, add Acronis client id and client secret. In ``to_notify``you can put list of numbers to send SMS, WhatsApp and Viber. However, during the trial in Infobip you can only send to the number you register with, so put the number you use to register with Infobit here.
 
-``channell`` parameter is to configure the way you sent notification. There are four possible values supported: ``sms``, ``whatsapp``, ``whatsapp-sms``, ``viber-sms``. ``whatsapp-sms``, ``viber-sms`` are OMNI message scenarios. The system trys to send messages to a messenger and if fail, sends another simplified message by SMS.
+``channel`` parameter is to configure the way you sent notification. There are four possible values supported: ``sms``, ``whatsapp``, ``whatsapp-sms``, ``viber-sms``. ``whatsapp-sms``, ``viber-sms`` are OMNI message scenarios. The system trys to send messages to a messenger and if fail, sends another simplified message by SMS.
 
 ``whats_app_from_number``, ``viber_from_account`` and ``sms_from_number`` are numbers/account used for ``from`` filed for your messages. The config file is already filled by test domain Infobip data for that fields.
 
@@ -210,4 +210,4 @@ The structure is very simple, code is iterate through array of recipients from `
 
 It's a very simple strighforward example of integration between Infobip and Acronis, where Acronis is used as an example of any services which can be accessed through API. This example is ready to used and can be simple adopted for any other services. Not all possible error handled, only logical one. Thus if you plan to use it in production, you can surround code in ``main.py`` by ``try ... catch`` routine and manage errors in one place.
 
-I designed this example to showcase, how you can imporove you partner, customer or internal support team expirince simple with modern CSaaS solutions.
+I designed this example to showcase, how simple you can imporove you partner, customer or internal support team expirince  with modern CSaaS solutions.

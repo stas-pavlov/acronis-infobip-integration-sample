@@ -55,6 +55,7 @@ class Config:
     sms_from_number = None
     viber_from_account = None
     to_notify = None
+    channel = None
     
     omni_viber_scenario = None
     omni_whatsapp_scenario = None
@@ -74,6 +75,7 @@ class Config:
         self.sms_from_number = self.__cfg.get("sms_from_number", None)
         self.viber_from_account = self.__cfg.get("viber_from_account", None)
         self.to_notify = self.__cfg.get("to_notify", None)
+        self.channel = self.__cfg.get("channel", None)
 
         self.header = {"User-Agent": "Acronis Infobip Integration Examples"}
 
@@ -154,15 +156,6 @@ class Acronis:
             auth=self.__auth,
             data=data
         )
-
-    def get_integration_root_tenant(self):
-        response = self.get("api/2/clients/{self.__cfg.acronis_client_id}")
-
-        if response.ok:
-            return response.json()["tenant_id"]
-        else:
-            return None
-
 
 # Class to simplify calling Infobip REST API
 class Infobip:

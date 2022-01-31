@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Temporary block jsons during development
-.json
+config.json

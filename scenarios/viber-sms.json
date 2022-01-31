@@ -1,0 +1,14 @@
+{
+    "name": "Infobip-Acronsi Viber scenarioo",
+    "flow": [
+        {
+            "from": "",
+            "channel": "VIBER"
+        },
+        {
+            "from": "InfoSMS",
+            "channel": "SMS"
+        }
+    ],
+    "default": true
+}

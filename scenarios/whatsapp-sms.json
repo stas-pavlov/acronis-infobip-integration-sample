@@ -1,0 +1,14 @@
+{
+    "name": "Infobip-Acronsi WhatsApp scenarioo",
+    "flow": [
+        {
+            "from": "",
+            "channel": "WHATSAPP"
+        },
+        {
+            "from": "InfoSMS",
+            "channel": "SMS"
+        }
+    ],
+    "default": true
+}

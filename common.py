@@ -9,7 +9,6 @@ from typing import Any
 
 # Define additional authentication class for requests
 # for API Key authentication
-
 class APIKeyAuth(requests.auth.AuthBase):
 
     def __init__(self, api_key):
@@ -21,8 +20,6 @@ class APIKeyAuth(requests.auth.AuthBase):
 
 # Define additional authentication class for requests
 # for Bearer authentication
-
-
 class BearerAuth(requests.auth.AuthBase):
 
     def __init__(self, token):
@@ -33,8 +30,6 @@ class BearerAuth(requests.auth.AuthBase):
         return r
 
 # Config class to store all needed values and init all needed stuff
-
-
 class Config:
 
     __cfg = None
@@ -82,11 +77,14 @@ class Config:
         self.__check_acronis_token()
         self.__load_omni_scenarios()
 
+    # Read config file fron config.json directory
+    # as the py file
     def __read_config(self):
         if os.path.exists('config.json'):
             with open('config.json') as сfg_file:
                 self.__cfg = json.load(сfg_file)
 
+    # Issue a JWT token to access Acrons API
     def __issue_acronis_token(self):
         response = requests.post(
             f'{self.acronis_base_url}api/2/idp/token',
@@ -99,10 +97,12 @@ class Config:
             self.acronis_token = response.json()["access_token"]
             self.acronis_token_expires_on = response.json()["expires_on"]
 
+    # Check that access token is not expired
     def __check_acronis_token(self):
         if self.acronis_token_expires_on - time() < 900:
             self.__issue_acronis_token()
-            
+    
+    # Load OMNI scenarios JSON     
     def __load_omni_scenarios(self):
         if os.path.exists('scenarios/viber-sms.json'):
             with open('scenarios/viber-sms.json') as viber_file:
@@ -203,6 +203,7 @@ class Infobip:
             data=data
         )
 
+    # Senf a SMS message to all persons from to_notify array in config.json
     def send_sms_message(self, msg: str):
 
         sms_responses = []
@@ -227,6 +228,7 @@ class Infobip:
 
         return sms_responses
 
+    # Send a WhatsApp message to all persons from to_notify array in config.json
     def send_whatsapp_message(self, msg: str):
 
         whatsapp_responses = []
@@ -247,6 +249,7 @@ class Infobip:
 
         return whatsapp_responses
 
+    # Send an OMNI message Viber+SMS to all persons from to_notify array in config.json
     def send_omni_viber_sms_message(self, msg: str, failover_msg: str):
 
         omni_responses = []
@@ -275,6 +278,7 @@ class Infobip:
 
         return omni_responses
 
+    # Send an OMNI message WhatsApp+SMS to all persons from to_notify array in config.json
     def send_omni_whatsapp_sms_message(self, msg: str, failover_msg: str):
 
         omni_responses = []
@@ -302,6 +306,7 @@ class Infobip:
             omni_responses.append(response)
         return omni_responses
     
+    # Create Viber+SMS OMNI scenario
     def __create_viber_sms_onmi_scenario(self):
         self.__cfg.omni_viber_scenario["name"] = 'acronis-infobip-viber-sms-omni'
         viber_flow = [flow for flow in self.__cfg.omni_viber_scenario["flow"] if flow["channel"] == 'VIBER']
@@ -309,6 +314,7 @@ class Infobip:
         response = self.post("omni/1/scenarios", data=json.dumps(self.__cfg.omni_viber_scenario))
         return response
     
+    # Create WhatsApp+SMS OMNI scenario
     def __create_whatsapp_sms_onmi_scenario(self):
         self.__cfg.omni_whatsapp_scenario["name"] = 'acronis-infobip-whatsapp-sms-omni'
         whatsapp_flow = [flow for flow in self.__cfg.omni_whatsapp_scenario["flow"] if flow["channel"] == 'WHATSAPP']
@@ -316,6 +322,9 @@ class Infobip:
         response = self.post("omni/1/scenarios", data=json.dumps(self.__cfg.omni_whatsapp_scenario))
         return response
 
+    # Check if scenarios with pre-defined names exist
+    # If there are no scenarios, they will be created
+    # Scenarios is created is only once
     def __ensure_omni_scenarios_exists(self):
         response = self.get("omni/1/scenarios")
         
